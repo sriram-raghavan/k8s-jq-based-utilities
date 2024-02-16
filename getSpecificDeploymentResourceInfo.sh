@@ -11,6 +11,24 @@ fi
 namespace="$1"
 deployment_name="$2"
 
+# Check if kubectl is installed
+if ! command -v kubectl &> /dev/null; then
+    echo "Error: kubectl is not installed. Please install kubectl and try again."
+    exit 1
+fi
+
+# Get the current context
+current_context=$(kubectl config current-context)
+
+# Check if the current context is empty
+if [ -z "$current_context" ]; then
+    echo "Error: No current context found. Make sure your kubeconfig is properly configured."
+    exit 1
+fi
+
+# Print the current context
+echo "Current context: $current_context"
+
 # Retrieve deployment information
 deployment_info=$(kubectl get deployment "$deployment_name" --namespace="$namespace" -o json)
 
