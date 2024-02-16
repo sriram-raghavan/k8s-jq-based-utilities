@@ -1,1 +1,1 @@
-# k8s-jq-based-utilities
+# K8s utilities, based on jq. jq is a lightweight and flexible command-line JSON processor.
