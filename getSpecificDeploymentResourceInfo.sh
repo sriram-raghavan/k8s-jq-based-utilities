@@ -36,21 +36,21 @@ deployment_info=$(kubectl get deployment "$deployment_name" --namespace="$namesp
 if [ -z "$deployment_info" ]; then
     echo "Deployment '$deployment_name' not found in namespace '$namespace'."
     exit 1
+else
+	# Extract replicas, CPU, memory request, and limit information
+	replicas=$(echo "$deployment_info" | $jq -r '.spec.replicas // empty')
+	cpu_request=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.requests.cpu // empty')
+	memory_request=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.requests.memory // empty')
+	cpu_limit=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.limits.cpu // empty')
+	memory_limit=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.limits.memory // empty')
+
+	# Output the extracted information
+	echo "Deployment Information for '$deployment_name' in namespace '$namespace':"
+	echo "Replicas: $replicas"
+	echo "Limits: "
+	echo "  CPU Limit: $cpu_limit"
+	echo "  Memory Limit: $memory_limit"
+	echo "Requests: "
+	echo "  CPU Request: $cpu_request"
+	echo "  Memory Request: $memory_request"
 fi
-
-# Extract replicas, CPU, memory request, and limit information
-replicas=$(echo "$deployment_info" | $jq -r '.spec.replicas // empty')
-cpu_request=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.requests.cpu // empty')
-memory_request=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.requests.memory // empty')
-cpu_limit=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.limits.cpu // empty')
-memory_limit=$(echo "$deployment_info" | $jq -r '.spec.template.spec.containers[0].resources.limits.memory // empty')
-
-# Output the extracted information
-echo "Deployment Information for '$deployment_name' in namespace '$namespace':"
-echo "Replicas: $replicas"
-echo "Limits: "
-echo "  CPU Limit: $cpu_limit"
-echo "  Memory Limit: $memory_limit"
-echo "Requests: "
-echo "  CPU Request: $cpu_request"
-echo "  Memory Request: $memory_request"
