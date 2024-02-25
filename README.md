@@ -5,6 +5,9 @@
 <b><u>getSpecificDeploymentResourceInfo</u></b> - Get information on replica count, CPU and memory requests and limits for a particular deployment. <br/>
 <i>Usage - ./getSpecificDeploymentResourceInfo.sh namespace deployment-name </i>
 
+<b><u>getSpecificDeploymentVersionFromNamespace</u></b> - Get version number for a specific deployment from a namespace.<br/>
+<i>Usage - ./getSpecificDeploymentVersionFromNamespace.sh namespace deployment-name</i> <br/>
+
 <b><u>getSpecificSecretFromNamespace</u></b> - Get specific secret from a namespace. <br/>
 <i>Usage - ./getSpecificSecretFromNamespace.sh namespace </i> <br/>
 
