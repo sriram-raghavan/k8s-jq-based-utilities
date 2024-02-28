@@ -2,7 +2,7 @@
 # Unable to check if namespace is part of the current cluster! To do this cluster level access is needed as kubectl get namespace does not work!
 
 # Location of 'jq' in local machine. If 'jq' is configured in the machine this is not needed and we can use 'jq' directly.
-jq="C:\Users\Raghavan.Mohan\Downloads\jq.exe"
+jq="C:\Users\sriram\Downloads\jq.exe"
 
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <namespace> <secret-name>"
