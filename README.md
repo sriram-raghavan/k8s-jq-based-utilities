@@ -9,7 +9,12 @@
 <i>Usage - ./getSpecificDeploymentVersionFromNamespace.sh namespace deployment-name</i> <br/>
 
 <b><u>getSpecificSecretFromNamespace</u></b> - Get specific secret from a namespace. <br/>
-<i>Usage - ./getSpecificSecretFromNamespace.sh namespace </i> <br/>
+<i>Usage - ./getSpecificSecretFromNamespace.sh namespace secret-name </i> <br/>
 
 <b><u>getAllSecretsFromNamespace</u></b> - Get all the secrets from a namespace. Exclude secrets that have "-backup-" in their name and type "helm.sh/release.v1"<br/>
 <i>Usage - ./getAllSecretsFromNamespace.sh namespace </i> <br/>
+
+<b><u>Base64 Decoded</u></b><br/>
+
+<b><u>getSpecificSecretFromNamespace</u></b> - Get specific secret from a namespace, however the values for the keys will be Base64 decoded one's. <br/>
+<i>Usage - ./getSpecificSecretFromNamespace.sh namespace secret-name </i> <br/>
