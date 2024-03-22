@@ -15,28 +15,9 @@ validate_namespace "$namespace"
 # Check the return value of the function
 if [ $? -eq 0 ]; then
 
-    # Check if kubectl is installed
-    if ! command -v kubectl &> /dev/null; then
-        echo "Error: kubectl is not installed. Please install kubectl and try again."
-        exit 1
-    fi
-
-    # Get the current context
-    current_context=$(kubectl config current-context)
-
-    # Check if the current context is empty
-    if [ -z "$current_context" ]; then
-        echo "Error: No current context found. Make sure your kubeconfig is properly configured."
-        exit 1
-    fi
-
-    # Print the current context
-    # echo "Current context: $current_context"
-    echo "Namespace found in $current_context."
-
     # Reversing all the characters of the input parameter to lowercase. This is OPTIONAL.
     lowercase_namespace="${namespace,,}"
-    echo "Namespace: " $lowercase_namespace
+    # echo "Namespace: " $lowercase_namespace
     
     # Retrieve secrets
     secrets_json=$(kubectl get secrets --namespace=${lowercase_namespace} -o json)
