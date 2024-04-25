@@ -22,7 +22,7 @@ if [ $? -eq 0 ]; then
     # Retrieve secrets
     secrets_json=$(kubectl get secrets --namespace=${lowercase_namespace} -o json)
 
-    	# Check if the secret exists
+    # Check if the secret exists
 	if [ -z "$secrets_json" ]; then
 		echo "Secrets not found for namespace '$lowercase_namespace'."
 		exit 1
