@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Location of 'jq' in local machine. If 'jq' is configured in the machine this is not needed and we can use 'jq' directly.
-jq="C:\Users\sriram\Downloads\jq.exe"
+jq="..\lib\jq.exe"
 
 # Check if kubectl is installed
 if ! command -v kubectl &> /dev/null; then
